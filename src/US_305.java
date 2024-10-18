@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
@@ -14,6 +15,7 @@ import java.io.File;
 public class US_305 extends BaseDriver {
 
     public static Actions action = new Actions(driver);
+
     String productName = "Demo eBook";
     String eMail = "kayamerve@gmail.com";
     String nameOnCard = "Merve Kaya";
@@ -74,30 +76,35 @@ public class US_305 extends BaseDriver {
                 robot.keyPress(KeyEvent.VK_TAB);
                 robot.keyRelease(KeyEvent.VK_TAB);
             }
+
             action.sendKeys(eMail).perform();
 
             for (int i = 0; i < 1; i++) {
                 robot.keyPress(KeyEvent.VK_TAB);
                 robot.keyRelease(KeyEvent.VK_TAB);
             }
+
             action.sendKeys(eMail).perform();
 
             for (int i = 0; i < 1; i++) {
                 robot.keyPress(KeyEvent.VK_TAB);
                 robot.keyRelease(KeyEvent.VK_TAB);
             }
+
             action.sendKeys(nameOnCard).perform();
 
             for (int i = 0; i < 1; i++) {
                 robot.keyPress(KeyEvent.VK_TAB);
                 robot.keyRelease(KeyEvent.VK_TAB);
             }
+
             action.sendKeys(phoneNumber).perform();
 
             for (int i = 0; i < 1; i++) {
                 robot.keyPress(KeyEvent.VK_TAB);
                 robot.keyRelease(KeyEvent.VK_TAB);
             }
+
             action.sendKeys(company).perform();
         }
 
@@ -105,6 +112,7 @@ public class US_305 extends BaseDriver {
             robot.keyPress(KeyEvent.VK_TAB);
             robot.keyRelease(KeyEvent.VK_TAB);
         }
+
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='Checkout-Option ']")));
         action.sendKeys(creditCardNumber).perform();
         action.sendKeys(expiration).perform();
@@ -120,26 +128,26 @@ public class US_305 extends BaseDriver {
         Assert.assertTrue("The Confirm text is not matched", confirmText.getText().contains("confirmed"));
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Total']")));
-        WebElement totalText=driver.findElement(By.xpath("//span[text()='Total']"));
+        WebElement totalText = driver.findElement(By.xpath("//span[text()='Total']"));
         MyFunc.scrollElement(totalText);
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//span[@class='usd'])[2]")));
-        WebElement orderInfo=driver.findElement(By.xpath("(//span[@class='usd'])[2]"));
+        WebElement orderInfo = driver.findElement(By.xpath("(//span[@class='usd'])[2]"));
         String orderTotal = orderInfo.getText().replaceAll("[^0-9,.]", "");
         double doubleTotal = Double.parseDouble(orderTotal);
         Assert.assertTrue("Total price is not same", doubleTotal == 0.5);
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Download']")));
-        WebElement downloadButton=driver.findElement(By.xpath("//span[text()='Download']"));
+        WebElement downloadButton = driver.findElement(By.xpath("//span[text()='Download']"));
         wait.until(ExpectedConditions.elementToBeClickable(downloadButton));
         MyFunc.jsClick(downloadButton);
 
-        StringSelection downloadFolderPath= new StringSelection("C:\\Users\\User\\Downloads\\demo.pdf");
+        StringSelection downloadFolderPath = new StringSelection("C:\\Users\\User\\Downloads\\demo.pdf");
         File downloadedFile = new File(downloadFolderPath + File.separator + "demo.pdf");
 
-        if (downloadedFile.exists()){
+        if (downloadedFile.exists()) {
             System.out.println("The file was successfully downloaded.");
-        }else {
+        } else {
             System.out.println("The file could not be downloaded ");
         }
 

@@ -64,36 +64,42 @@ public class US_303 extends BaseDriver {
             robot.keyPress(KeyEvent.VK_TAB);
             robot.keyRelease(KeyEvent.VK_TAB);
         }
+
         actions.sendKeys(email).perform();
 
         for (int i = 0; i < 1; i++) {
             robot.keyPress(KeyEvent.VK_TAB);
             robot.keyRelease(KeyEvent.VK_TAB);
         }
+
         actions.sendKeys(confirmEmail).perform();
 
         for (int i = 0; i < 1; i++) {
             robot.keyPress(KeyEvent.VK_TAB);
             robot.keyRelease(KeyEvent.VK_TAB);
         }
+
         actions.sendKeys(nameOnCard).perform();
 
         for (int i = 0; i < 1; i++) {
             robot.keyPress(KeyEvent.VK_TAB);
             robot.keyRelease(KeyEvent.VK_TAB);
         }
+
         actions.sendKeys(phone).perform();
 
         for (int i = 0; i < 1; i++) {
             robot.keyPress(KeyEvent.VK_TAB);
             robot.keyRelease(KeyEvent.VK_TAB);
         }
+
         actions.sendKeys(company).perform();
 
         for (int i = 0; i <= 1; i++) {
             robot.keyPress(KeyEvent.VK_TAB);
             robot.keyRelease(KeyEvent.VK_TAB);
         }
+
         actions.sendKeys(cardNumber).perform();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@type='button' and @class='Pay-Button']")));

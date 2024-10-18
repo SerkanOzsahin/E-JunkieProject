@@ -8,50 +8,50 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class US_306 extends BaseDriver {
-    String nameStr="John";
-    String emailStr="TestUser"+(int)(Math.random()*100)+"@gmail.com";
-    String subjectStr="Private";
-    String messageStr="No Message";
+    String nameStr = "John";
+    String emailStr = "TestUser" + (int) (Math.random() * 100) + "@gmail.com";
+    String subjectStr = "Private";
+    String messageStr = "No Message";
 
     @Test
-    public void contactUs(){
-        Actions actions=new Actions(driver);
+    public void contactUs() {
+        Actions actions = new Actions(driver);
         driver.get("https://shopdemo.fatfreeshop.com/");
         wait.until(ExpectedConditions.urlToBe("https://shopdemo.fatfreeshop.com/"));
 
-        WebElement contactUsBtn=driver.findElement(By.cssSelector("[class='contact']"));
+        WebElement contactUsBtn = driver.findElement(By.cssSelector("[class='contact']"));
         MyFunc.scrollElement(contactUsBtn);
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[class='contact']")));
         actions.click(contactUsBtn).build().perform();
 
         wait.until(ExpectedConditions.urlToBe("https://shopdemo.fatfreeshop.com/contact"));
-        WebElement contactUsControl=driver.findElement(By.cssSelector("[class='has-text-centered']"));
-        Assert.assertTrue("Contact us page failed to open",contactUsControl.getText().contains("You can use the form"));
+        WebElement contactUsControl = driver.findElement(By.cssSelector("[class='has-text-centered']"));
+        Assert.assertTrue("Contact us page failed to open", contactUsControl.getText().contains("You can use the form"));
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[name='sender_name']")));
-        WebElement name=driver.findElement(By.cssSelector("[name='sender_name']"));
+        WebElement name = driver.findElement(By.cssSelector("[name='sender_name']"));
         actions.click(name).sendKeys(nameStr).build().perform();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[name='sender_email']")));
-        WebElement email=driver.findElement(By.cssSelector("[name='sender_email']"));
+        WebElement email = driver.findElement(By.cssSelector("[name='sender_email']"));
         actions.click(email).sendKeys(emailStr).build().perform();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[id='sender_subject']")));
-        WebElement subject=driver.findElement(By.cssSelector("[id='sender_subject']"));
+        WebElement subject = driver.findElement(By.cssSelector("[id='sender_subject']"));
         actions.click(subject).sendKeys(subjectStr).build().perform();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[id='sender_message']")));
-        WebElement message=driver.findElement(By.cssSelector("[id='sender_message']"));
+        WebElement message = driver.findElement(By.cssSelector("[id='sender_message']"));
         actions.click(message).sendKeys(messageStr).build().perform();
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[type='submit']")));
-        WebElement sendMessageBtn=driver.findElement(By.cssSelector("button[type='submit']"));
+        WebElement sendMessageBtn = driver.findElement(By.cssSelector("button[type='submit']"));
         wait.until(ExpectedConditions.elementToBeClickable(sendMessageBtn));
         actions.click(sendMessageBtn).build().perform();
 
         wait.until(ExpectedConditions.alertIsPresent());
-        String alertMessage=driver.switchTo().alert().getText();
-        Assert.assertTrue("no alert did not appear",alertMessage.contains("didn't match"));
+        String alertMessage = driver.switchTo().alert().getText();
+        Assert.assertTrue("no alert did not appear", alertMessage.contains("didn't match"));
         driver.switchTo().alert().accept();
 
         tearDown();

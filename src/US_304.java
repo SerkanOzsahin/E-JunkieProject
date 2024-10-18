@@ -6,12 +6,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class US_304 extends BaseDriver {
 
     public static Actions action = new Actions(driver);
+
     String productName = "Demo eBook";
     String eMail = "kayamerve@gmail.com";
     String nameOnCard = "Merve Kaya";
@@ -72,37 +74,43 @@ public class US_304 extends BaseDriver {
                 robot.keyPress(KeyEvent.VK_TAB);
                 robot.keyRelease(KeyEvent.VK_TAB);
             }
+
             action.sendKeys(eMail).perform();
 
             for (int i = 0; i < 1; i++) {
                 robot.keyPress(KeyEvent.VK_TAB);
                 robot.keyRelease(KeyEvent.VK_TAB);
             }
+
             action.sendKeys(eMail).perform();
 
             for (int i = 0; i < 1; i++) {
                 robot.keyPress(KeyEvent.VK_TAB);
                 robot.keyRelease(KeyEvent.VK_TAB);
             }
+
             action.sendKeys(nameOnCard).perform();
 
             for (int i = 0; i < 1; i++) {
                 robot.keyPress(KeyEvent.VK_TAB);
                 robot.keyRelease(KeyEvent.VK_TAB);
             }
+
             action.sendKeys(phoneNumber).perform();
 
             for (int i = 0; i < 1; i++) {
                 robot.keyPress(KeyEvent.VK_TAB);
                 robot.keyRelease(KeyEvent.VK_TAB);
             }
+
             action.sendKeys(company).perform();
         }
 
-        for (int i = 0; i <2; i++) {
+        for (int i = 0; i < 2; i++) {
             robot.keyPress(KeyEvent.VK_TAB);
             robot.keyRelease(KeyEvent.VK_TAB);
         }
+
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[class='Checkout-Option ']")));
         action.sendKeys(creditCardNumber).perform();
         action.sendKeys(expiration).perform();
@@ -114,8 +122,8 @@ public class US_304 extends BaseDriver {
         MyFunc.jsClick(payButton);
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[@class='confirme_text']")));
-        WebElement confirmText=driver.findElement(By.xpath("//p[@class='confirme_text']"));
-        Assert.assertTrue("The Confirm text is not matched",confirmText.getText().contains("confirmed"));
+        WebElement confirmText = driver.findElement(By.xpath("//p[@class='confirme_text']"));
+        Assert.assertTrue("The Confirm text is not matched", confirmText.getText().contains("confirmed"));
 
         tearDown();
     }

@@ -25,6 +25,7 @@ public class US_308 extends BaseDriver {
             robot.keyRelease(KeyEvent.VK_TAB);
             MyFunc.Wait(1);
         }
+
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
 
