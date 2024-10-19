@@ -8,6 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class US_306 extends BaseDriver {
+
     String nameStr = "John";
     String emailStr = "TestUser" + (int) (Math.random() * 100) + "@gmail.com";
     String subjectStr = "Private";

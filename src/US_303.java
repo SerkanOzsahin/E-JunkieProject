@@ -60,6 +60,7 @@ public class US_303 extends BaseDriver {
         Assert.assertTrue("‘Billing information’ has been filled in.", billingDetails.isDisplayed());
 
         MyFunc.Wait(2);
+
         for (int i = 0; i <= 2; i++) {
             robot.keyPress(KeyEvent.VK_TAB);
             robot.keyRelease(KeyEvent.VK_TAB);
